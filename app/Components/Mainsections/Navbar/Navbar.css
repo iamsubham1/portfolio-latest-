@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Qwitcher+Grypen:wght@400;700&display=swap');
+
+.nav {
+    font-size: 1rem;
+    padding: 0.9rem 2rem;
+    height: 50px;
+    width: 100vw;
+    box-shadow: 0 0px 50px #0c49f149,
+        0 2px 10px #6d6d6d59;
+
+    transition: transform 0.2s;
+    background-color: black;
+    z-index: 8;
+    font-family: "Poppins", sans-serif;
+
+    a {
+        position: relative;
+        display: block;
+        letter-spacing: 1px;
+        text-decoration: none;
+        transition: 0.2s;
+        color: rgb(255, 255, 255);
+        font-weight: 350;
+
+        &::after {
+            position: absolute;
+            content: "";
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #ffffff;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.2s;
+        }
+
+        &:hover {
+            color: #0ca5ec;
+        }
+
+        &:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+    }
+}
+
+.handwriting {
+    font-family: "Qwitcher Grypen", cursive;
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+.gradient-span {
+    display: flex;
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) -30%, rgba(31, 83, 198, 1) 30%, rgba(0, 212, 255, 1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+@media only screen and (max-width: 660px) {
+    .nav {
+        padding: 0.5rem 1.3rem;
+        position: sticky;
+        top: 1.5rem;
+
+        a {
+            font-size: 0.7rem;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+    .nav {
+        padding: 0.4rem 1.3rem;
+
+        a {
+            font-size: 0.65rem;
+        }
+    }
+
+}
+
+.bar {
+    width: 10vw;
+    height: 120vh;
+    background: #131313;
+    z-index: 999 !important;
+}
