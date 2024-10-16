@@ -32,7 +32,7 @@ const Projects = () => {
               <CardItem className="card-item icons-btn-div" translateZ={40}>
                 <div className="icon-list">
                   {project.iconLists.map((icon, index) => (
-                    <Image key={index} src={icon} alt={'icon-img'} width={20} height={20} />
+                    <Image key={index} src={icon || ""} alt={'icon-img'} width={20} height={20} />
                   ))}
                 </div>
                 <div className="live-button">
