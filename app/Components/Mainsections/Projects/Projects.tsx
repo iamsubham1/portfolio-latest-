@@ -35,10 +35,15 @@ const Projects = () => {
                     <Image key={index} src={icon || ""} alt={'icon-img'} width={20} height={20} />
                   ))}
                 </div>
-                <div className="live-button">
-                  <button className="px-7 py-1.5 rounded-full relative bg-slate-700 text-white text-sm hover:shadow-2xl hover:shadow-white/[0.1] transition duration-200 border border-slate-600">
+                <div className="live-button z-40">
+                  <button
+                    className="px-7 py-1.5 rounded-full relative bg-slate-700 text-white text-sm hover:shadow-2xl hover:shadow-white/[0.1] transition duration-200 border border-slate-600"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     <div className="absolute inset-x-0 h-px w-1/2 mx-auto -top-px shadow-2xl bg-gradient-to-r from-transparent via-teal-500 to-transparent" />
-                    <span className="relative z-20"><a href={project.link} className='btn' target="_blank" rel="noopener noreferrer">Live Site</a></span>
+                    <span className="relative z-20">
+                      <a href={project.link} className='btn' target="_blank" rel="noopener noreferrer">{project.button}</a>
+                    </span>
                   </button>
                 </div>
               </CardItem>

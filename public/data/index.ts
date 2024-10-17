@@ -13,7 +13,9 @@ export const projects = [
     des: "Gadgets Grab is a modern e-commerce application that features secure payment integration, OAuth authentication, and Redis caching for optimized performance.",
     img: "/gadgetsgrab.png", // Existing image kept
     iconLists: ["/re.svg", "/node.svg", "/express.svg", "/mongo.svg", "/redis.svg", "/docker.svg"],
-    link: "https://gadgetsgrab.com/",
+    link: "https://gadgetsgrabapp.netlify.app/",
+    button: "Live Link"
+
   },
   {
     id: 2,
@@ -21,7 +23,8 @@ export const projects = [
     des: "Connect is a real-time chatting app that enables users to communicate instantly through Socket.IO, providing a seamless, fast messaging experience.",
     img: "/connect.png", // Existing image kept
     iconLists: ["/socketio.svg", "/re.svg", "/node.svg", "/mongo.svg", "/express.svg", , "/docker.svg"],
-    link: "https://connect-chatapp.com/",
+    link: "https://connectchattingapp.netlify.app/",
+    button: "Live Link"
   },
   {
     id: 3,
@@ -29,7 +32,8 @@ export const projects = [
     des: "YTMusic is an Electron-based desktop app that enhances the YouTube Music experience, offering a sleek, native-like interface for streaming music.",
     img: "/ytmusic.png", // Existing image kept
     iconLists: ["/electron.svg", "/js.svg", "/html.svg", "/css.svg"],
-    link: "https://ytmusic-app.com/",
+    link: "https://github.com/iamsubham1/Youtube-music-electron-app-",
+    button: "Github"
   },
   {
     id: 4,
@@ -37,7 +41,8 @@ export const projects = [
     des: "This Chrome extension enables real-time translation for WhatsApp Web, allowing users to communicate in multiple languages effortlessly.",
     img: "/wa.png", // Existing image kept
     iconLists: ["/chrome.svg", "/js.svg", "/html.svg", "/css.svg"],
-    link: "https://chrome.google.com/webstore/whatsapp-translation-extension/",
+    link: "https://github.com/iamsubham1/whatsapp-lang-translate-extension",
+    button: "Github"
   },
 
 ];

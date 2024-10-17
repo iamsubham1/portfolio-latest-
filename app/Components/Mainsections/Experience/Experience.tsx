@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { TextRevealCard, TextRevealCardTitle, TextRevealCardDescription } from '../../ui/TextRevealCard';
 import { SectionWrapper } from '@/app/hoc';
 import Image from 'next/image';
-import ArrowImage1 from './assets/dotted1.png'; // Adjust path as needed
+import ArrowImage1 from './assets/dotted1.png';
 import ArrowImage2 from './assets/dotted2.png';
 const Experience = () => {
     return (
@@ -199,6 +199,7 @@ const ExperienceContainer = styled.div`
         }
     }
 `;
+
 const ArrowContainer = styled.div`
     display: flex;
     justify-content: center;
