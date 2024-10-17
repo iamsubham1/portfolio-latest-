@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        const text = "tarunappari23@gmail.com";
+        const text = "myworkemail.subham@gmail.com";
         navigator.clipboard.writeText(text);
         setCopied(true);
     };
