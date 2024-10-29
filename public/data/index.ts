@@ -29,11 +29,11 @@ export const projects = [
   {
     id: 3,
     title: "YTMusic",
-    des: "YTMusic is an Electron-based desktop app that enhances the YouTube Music experience, offering a sleek, native-like interface for streaming music.",
+    des: "YTMusic is an Electron-based desktop app that enhances the YouTube Music experience, offering a sleek, native-like interface for streaming music.Download and install to experience it yourself",
     img: "/ytmusic.png", // Existing image kept
     iconLists: ["/electron.svg", "/js.svg", "/html.svg", "/css.svg"],
-    link: "https://github.com/iamsubham1/Youtube-music-electron-app-",
-    button: "Github"
+    link: "https://drive.google.com/file/d/1DJeHSoDpui3Hi6M9PhzrnVMI5lSgtffo/view",
+    button: "Download Setup"
   },
   {
     id: 4,
