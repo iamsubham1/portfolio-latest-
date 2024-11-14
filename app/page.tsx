@@ -13,7 +13,7 @@ import StarsCanvas from './Components/Stars';
 import Footer from './Components/Mainsections/Footer/Footer';
 
 export default function Home() {
-  const [showStarsCanvas, setShowStarsCanvas] = useState(false);
+  const [showStarsCanvas, setShowStarsCanvas] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -33,7 +33,6 @@ export default function Home() {
         <Tech idName="tech" />
         <Contact idName="#contact" />
         <Footer idName='' />
-        {showStarsCanvas && <StarsCanvas />} {/* Conditionally render StarsCanvas */}
       </div>
     </main>
   );

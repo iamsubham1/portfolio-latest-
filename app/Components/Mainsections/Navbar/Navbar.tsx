@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import styled from "styled-components";
 import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
+import myPic from '../../../../public/mypic.png'
+import Image from 'next/image';
 
 // Define the type for navItems
 type NavItem = {
@@ -47,8 +49,8 @@ export const Navbar = ({
 
       <IconContainer>
 
-        <p className="handwriting "><span className="gradient-span">S</span>ubham Das</p>
-
+        {/* <p className="handwriting "><span className="gradient-span">S</span>ubham Das</p> */}
+        <Image src={myPic} className='rounded-full ' alt="my-picture" width={38} height={38} />
 
       </IconContainer>
 
@@ -76,7 +78,7 @@ export const Navbar = ({
           <IconBrandGithub className="icon" />
         </a>
       </IconContainer>
-    </div>
+    </div >
   );
 };
 

@@ -16,8 +16,6 @@ import CanvasLoader from "../../Loader";
 import { navItems } from "@/public/data";
 import { Navbar } from "../Navbar/Navbar";
 
-const TechGuy = dynamic(() => import("../../models/TechGuy"), { suspense: true });
-const Computer = dynamic(() => import("../../models/Computer"), { suspense: true });
 
 const Hero: React.FC = () => {
 

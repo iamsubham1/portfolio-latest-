@@ -54,7 +54,7 @@ export function ContactForm() {
   };
 
   return (
-    <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+    <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black mb-[70%] md:mb-[5%]">
       <h2 className="font-bold text-x1 text-neutral-800 dark:text-neutral-200">
         Contact Me.
       </h2>

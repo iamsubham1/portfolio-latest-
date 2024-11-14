@@ -13,9 +13,9 @@ const Projects = () => {
 
   return (
     <ProjectsMainContainer className="main-container">
-      <div className='featured-container'>
+      <div className='featured-container mb-8'>
         <h1>
-          Featured <span className='span-gradient'>Works</span>
+          Projects  <span className='span-gradient'>I have Worked On</span>
         </h1>
       </div>
       <ProjectContainer className="projects-container">
