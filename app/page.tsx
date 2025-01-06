@@ -32,7 +32,7 @@ export default function Home() {
         <Projects idName="#projects" />
         <Tech idName="tech" />
         <Contact idName="#contact" />
-        <Footer idName='' />
+        {/* <Footer idName='' /> */}
       </div>
     </main>
   );
