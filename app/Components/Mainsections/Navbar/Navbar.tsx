@@ -41,8 +41,9 @@ export const Navbar = ({
   return (
     <div
       className={cn(
-        "flex max-w-full fixed inset-x-0 mx-auto border-transparent dark:border-white/[0.2]  dark:bg-black bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[5000] pr-2 pl-8 py-2 items-center justify-evenly space-x-4 transition-all duration-[30s] ease-in-out",
-        isNavbarVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[-100%]',
+        "flex max-w-full fixed inset-x-0 mx-auto border-transparent dark:border-white/[0.2]  z-[5000] pr-2 pl-8 py-2 items-center justify-evenly space-x-4 transition-all duration-[30s] ease-in-out",
+        "bg-gradient-to-r from-[#C471FB] via-[#d4f9fb] to-[#03C3FF]",
+        isNavbarVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[-100%]",
         className
       )}
     >
@@ -56,19 +57,19 @@ export const Navbar = ({
 
 
       <div className="flex gap-6">
-
         {navItems.map((navItem: NavItem, idx: number) => (
           <Link
-            key={`link-${idx}`}  // Use a unique key
+            key={`link-${idx}`} // Use a unique key
             href={navItem.link}
             className={cn(
-              "relative dark:text-neutral-50 items-center flex text-[1rem] text-white dark:hover:text-neutral-300 hover:text-neutral-500"
+              "relative items-center flex text-[1rem] text-black dark:text-white"
             )}
           >
             {navItem.name}
           </Link>
         ))}
       </div>
+
 
       <IconContainer>
         <a href="https://www.linkedin.com/in/subham-das-35b851242/" target="_blank">
@@ -88,15 +89,17 @@ const IconContainer = styled.div`
   justify-content: center;
 
   .icon {
-    width: 24px;
-    height: 24px;
-    color: #0b69a0;
+  
     transition: color 0.3s ease;
   }
-
+.icon {
+  width: 24px;
+    height: 24px;
+    transition: color 0.3s ease;
+}
   a:hover .icon {
-    color: white;  // Change to a color on hover
-  }
+    color: white !important; /* Prevent hover color change */
+}
 
   @media only screen and (max-width: 800px) {
     margin-top: -8rem;

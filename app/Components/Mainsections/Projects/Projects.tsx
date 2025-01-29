@@ -15,7 +15,7 @@ const Projects = () => {
     <ProjectsMainContainer className="main-container">
       <div className='featured-container mb-8'>
         <h1>
-          Projects  <span className='span-gradient'>I have Worked On</span>
+          <span className='span-gradient'> My Personal Projects</span>
         </h1>
       </div>
       <ProjectContainer className="projects-container">

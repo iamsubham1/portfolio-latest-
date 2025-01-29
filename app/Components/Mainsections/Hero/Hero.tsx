@@ -248,13 +248,18 @@ background:red;
     z-index: 3 !important;
     position: relative;
 
-    h2 {
-      letter-spacing: 1rem;
-      color: #3a80e9;
-      font-weight: 700;
-      font-size: 1.2rem;
-      position: relative;
-    }
+  h2 {
+  letter-spacing: 1rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  position: relative;
+  background: linear-gradient(to right, #C471FB, #d4f9fb, #03C3FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
 
     .h1 {
       font-size: 3.3rem;
@@ -276,7 +281,7 @@ background:red;
 
       .gradient-span {
         display: flex;
-        background: linear-gradient(90deg, rgba(2, 0, 36, 1) -30%, rgba(31, 83, 198, 1) 30%, rgba(0, 212, 255, 1) 100%);
+        background: linear-gradient(90deg, #C471FB 25%, #D4F9FB 50%, #03C3FF 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;

@@ -90,8 +90,8 @@ const ExperienceContainer = styled.div`
             font-weight: 800;
             
             .span-gradient {
-                background: linear-gradient(90deg, rgba(2, 0, 36, 1) -30%, rgba(31, 83, 198, 1) 30%, rgba(0, 212, 255, 1) 100%);
-                -webkit-background-clip: text;
+               background: linear-gradient(90deg, #C471FB 25%, #D4F9FB 50%, #03C3FF 100%);
+        -webkit-background-clip: text;
                 background-clip: text;
                 color: transparent;
             }
