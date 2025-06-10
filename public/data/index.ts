@@ -1,8 +1,8 @@
 export const navItems = [
-  { name: "Home", link: "#home" },
-  { name: "About", link: "#about" },
-  { name: "Projects", link: "#projects" },
-  { name: "Contact", link: "#contact" },
+  { name: "HOME", link: "#home" },
+  { name: "ABOUT", link: "#about" },
+  { name: "WORK", link: "#projects" },
+  { name: "CONTACT", link: "#contact" },
 ];
 
 
@@ -157,7 +157,20 @@ export const technologies = [
     icon: "postgre.svg",
     num: 1.8,
     category: "backend"
+  },
+  {
+    name: "Amazon Web Services",
+    icon: "/TechIcons/aws.svg",
+    category: "cloud",
+    num: 16
+  },
+  {
+    name: "Apache Kafka",
+    icon: "/TechIcons/kafka.svg",
+    category: "backend",
+    num: 17
   }
+
 ];
 
 

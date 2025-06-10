@@ -1,134 +1,170 @@
-import React, { useRef, useState, useEffect } from "react";
-import dynamic from "next/dynamic";
-import { SectionWrapper } from "../../../hoc";
-import { technologies } from "../../../../public/data";
-import styled from "styled-components";
-import { motion } from 'framer-motion';
-import { fadeIn } from "../../../motion/motion";
+'use client';
 
-// Removed the dynamic import for BallCanvas since we're using static icons now
+import React, { useRef, useState, useEffect } from 'react';
+import { SectionWrapper } from '../../../hoc';
+import styled from 'styled-components';
+import { technologies } from '../../../../public/data';
 
 interface Technology {
-    name: string;
-    icon: string;
-    num: number;
+  name: string;
+  icon: string;
+  category: string;
+  num: number;
 }
 
-const Tech: React.FC = () => {
-    const [inView, setInView] = useState<string | null>(null);
-    const techRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setInView('inView');
-                } else {
-                    setInView(null);
-                }
-            },
-            { threshold: 0.1 }
-        );
-
-        if (techRef.current) {
-            observer.observe(techRef.current);
-        }
-
-        return () => {
-            if (techRef.current) {
-                observer.unobserve(techRef.current);
-            }
-        };
-    }, []);
-
-    return (
-        <TechContainer ref={techRef}>
-            <div>
-                <h1 className="h1 span-gradient">Technologies</h1>
-            </div>
-            <div className='tech-container flex flex-row flex-wrap justify-center gap-10'>
-                {technologies.map((technology: Technology) => (
-                    <motion.div
-                        variants={fadeIn('up', 'spring', technology.num, 0.5)}
-                        className='tech-item'
-                        key={technology.name}
-                    >
-                        <img
-                            src={technology.icon}
-                            alt={technology.name}
-                            className="tech-icon"
-                        />
-                    </motion.div>
-                ))}
-            </div>
-        </TechContainer>
-    );
+const descriptions: Record<string, string> = {
+  'HTML 5': 'Semantic markup and web standards.',
+  'CSS 3': 'Responsive and modern layouts.',
+  JavaScript: 'Core scripting and logic.',
+  'React JS': 'Component-driven UIs and SPA architecture.',
+  Redux: 'State management for React apps.',
+  'Tailwind CSS': 'Utility-first CSS framework.',
+  'Node JS': 'Backend services and API development.',
+  MongoDB: 'NoSQL document database solutions.',
+  git: 'Version control and collaboration.',
+  Redis: 'In-memory data structures and caching.',
+  Docker: 'Containerization and deployment.',
+  NestJS: 'Progressive Node.js framework.',
+  'Socket.IO': 'Real-time bi-directional communication.',
+  TypeScript: 'Typed JavaScript for safer code.',
+  PostgreSQL: 'Relational database management.',
+  'Amazon Web Services': "Cloud infrastructure",
+  "Apache Kafka": "Message queue for asyncronous communication"
 };
 
-export default SectionWrapper(Tech, "");
+const Tech: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const techRef = useRef<HTMLDivElement>(null);
 
-let TechContainer = styled.div`
-    min-height:60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    h1 {
-        align-self: flex-start;
-        font-size: 3rem;
-        font-weight: 700;
-        padding-bottom: 5rem;
-    }
+  const categorizedTechnologies = technologies.reduce<Record<string, Technology[]>>(
+    (acc, tech) => {
+      const cat = tech.category.charAt(0).toUpperCase() + tech.category.slice(1);
+      if (!acc[cat]) acc[cat] = [];
+      acc[cat].push(tech);
+      return acc;
+    },
+    {}
+  );
 
-    .tech-container {
-        max-width: 70%;
-    }
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.15 }
+    );
+    if (techRef.current) observer.observe(techRef.current);
 
-    /* Hover Effect */
-    .tech-item {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: all 0.3s ease-in-out;
-    }
+    return () => {
+      if (techRef.current) observer.unobserve(techRef.current);
+    };
+  }, []);
 
-    .tech-item:hover {
-        transform: scale(1.1);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
+  return (
+    <TechSection ref={techRef} aria-label="Technologies Section">
+      <SectionTitle>Technologies & Expertise</SectionTitle>
 
-    .tech-icon {
-        width: 6rem; /* Default size */
-        height: 6rem; /* Default size */
-    }
+      {Object.entries(categorizedTechnologies).map(([category, techList]) => (
+        <CategorySection key={category}>
+          <CategoryTitle>{category}</CategoryTitle>
+          <TechGrid role="list">
+            {techList.map(({ name, icon }) => (
+              <TechItem
+                key={name}
+                title={name}
+                role="listitem"
+                tabIndex={0}
+                aria-label={`${name}: ${descriptions[name] || 'Technology description not available.'}`}
+              >
+                <TechIcon src={icon} alt={name} loading="lazy" />
+                <TechName>{name}</TechName>
+                <TechDesc>{descriptions[name] || 'No description provided.'}</TechDesc>
+              </TechItem>
+            ))}
+          </TechGrid>
+        </CategorySection>
+      ))}
+    </TechSection>
+  );
+};
 
-    @media only screen and (max-width: 770px) {
-        h1 {
-            font-size: 2.5rem;
-            padding-bottom: 2rem;
-        }
-        .tech-container {
-            gap: 0.5rem !important;
-            min-width: 85vw !important;
-        }
-        .tech-icon {
-            width: 6rem;
-            height: 6rem;
-        }
-    }
+export default SectionWrapper(Tech, '');
+const TechSection = styled.section`
+  background-color: #121212;
+  min-height: 70vh;
+  padding: 4rem 1rem;
+  color: #ddd;
+  max-width: 1100px;
+  margin: 0 auto;
+`;
 
-    @media only screen and (max-width: 490px) {
-        h1 {
-            font-size: 1.9rem;
-        }
-        .tech-icon {
-            width: 3.35rem;
-            height: 3.35rem;
-        }
-        .tech-container {
-            gap: 0.5rem !important;
-            min-width: 90vw !important;
-        }
-    }
+const SectionTitle = styled.h2`
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 3rem;
+  background: linear-gradient(90deg, #c471fb, #03c3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
+const CategorySection = styled.div`
+  margin-bottom: 3rem;
+`;
+
+const CategoryTitle = styled.h3`
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #03c3ff;
+  padding-left: 0.75rem;
+  color: #03c3ff;
+`;
+
+const TechGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 2.2rem;
+`;
+
+const TechItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1c1c1c;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 14px rgba(3, 195, 255, 0.5);
+    transform: translateY(-4px);
+    outline: none;
+  }
+`;
+
+const TechIcon = styled.img`
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 0.8rem;
+  filter: drop-shadow(0 0 5px #03c3ff);
+  border-radius: 12px;
+  background: #1f1f1f;
+  padding: 0.8rem;
+`;
+
+const TechName = styled.h4`
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #eee;
+  margin-bottom: 0.3rem;
+  user-select: none;
+`;
+
+const TechDesc = styled.p`
+  font-size: 0.85rem;
+  color: #bbb;
+  user-select: none;
+  text-align: center;
+  line-height: 1.4;
 `;
